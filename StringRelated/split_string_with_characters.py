@@ -15,13 +15,19 @@ example output: ["How", "do", "you", "like", "coffee", "I"]
 
 import re
 
+
 def split_string(test_str):
+    unique_words = set()
 
     # rgx = re.compile("\w[\w']*\w|\w") only when you need to seprate ' as well
     rgx = re.compile("\w+")
-    splited_string = rgx.findall(test_str)
+    spliced_string = rgx.findall(test_str)
 
-    return str(splited_string)
+    for word in spliced_string:
+        if word.lower() not in unique_words:
+            unique_words.add(word.lower())
+
+    return list(unique_words)
 
 
 if __name__ == '__main__':
